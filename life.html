@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mandip Singh | Insurance Advisor</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0d1b2a;
+    color: white;
+    text-align: center;
+}
+
+/* HEADER */
+header {
+    padding: 20px;
+}
+
+.logo {
+    width: 120px;
+    cursor: pointer;
+}
+
+/* PROFILE SECTION */
+.profile {
+    margin-top: 20px;
+}
+
+.profile img {
+    width: 180px;
+    border-radius: 50%;
+    border: 4px solid #1b263b;
+}
+
+h1 {
+    margin: 10px 0 5px;
+}
+
+.subtitle {
+    color: #4ea8de;
+}
+
+/* SERVICES */
+.services {
+    margin: 40px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.service-btn {
+    background: #1b263b;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.service-btn:hover {
+    background: #4ea8de;
+}
+
+/* DIGITAL CARD */
+.card {
+    margin: 40px auto;
+    width: 300px;
+    background: #1b263b;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* APPOINTMENT */
+.appointment {
+    margin: 30px;
+}
+
+.appointment a {
+    background: #4ea8de;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+/* VIDEO MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    margin: 10% auto;
+    width: 80%;
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER WITH LOGO -->
+<header>
+    <img src="logo.png" class="logo" onclick="openVideo()" alt="Logo">
+</header>
+
+<!-- PROFILE -->
+<section class="profile">
+    <img src="profile.jpg" alt="Mandip Singh">
+    <h1>Mandip Singh</h1>
+    <p class="subtitle">Licensed Insurance Advisor</p>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+    <button class="service-btn" onclick="openService('life.html')">Life Insurance</button>
+    <button class="service-btn" onclick="openService('critical.html')">Critical Illness</button>
+    <button class="service-btn" onclick="openService('disability.html')">Disability</button>
+    <button class="service-btn" onclick="openService('travel.html')">Travel Insurance</button>
+    <button class="service-btn" onclick="openService('mortgage.html')">Mortgage</button>
+    <button class="service-btn" onclick="openService('investment.html')">Investments</button>
+</section>
+
+<!-- DIGITAL CARD -->
+<section class="card">
+    <h3>Contact</h3>
+    <p>📞 (416) 904-1219</p>
+    <p>✉️ mandipspurba@gmail.com</p>
+    <p>📍 Mississauga, ON</p>
+</section>
+
+<!-- APPOINTMENT -->
+<section class="appointment">
+    <h3>Free Financial Check</h3>
+    <a href="https://calendly.com/YOUR-LINK" target="_blank">Book Appointment</a>
+</section>
+
+<!-- VIDEO MODAL -->
+<div id="videoModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeVideo()">&times;</span>
+        <iframe width="100%" height="400" 
+            src="https://www.youtube.com/embed/YOUR_VIDEO" 
+            frameborder="0" allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<script>
+function openVideo() {
+    document.getElementById("videoModal").style.display = "block";
+}
+
+function closeVideo() {
+    document.getElementById("videoModal").style.display = "none";
+}
+
+function openService(page) {
+    window.location.href = page;
+}
+</script>
+
+</body>
+</html>
