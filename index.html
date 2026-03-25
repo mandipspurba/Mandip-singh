@@ -175,6 +175,21 @@ function closeVideo() {
 function openService(page) {
     window.location.href = page;
 }
+    function openVideo(videoId){
+  let video = document.getElementById(videoId);
+
+  // play video
+  video.play();
+
+  // request fullscreen
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitRequestFullscreen) {
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) {
+    video.msRequestFullscreen();
+  }
+}
 </script>
 
 </body>
