@@ -156,10 +156,9 @@ h1 {
 <div id="videoModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeVideo()">&times;</span>
-        <iframe width="100%" height="400" 
-            src="https://res.cloudinary.com/dtnmuheqj/video/upload/v1773959627/New%20Art%20of%20Living.mp4" 
-            frameborder="0" allowfullscreen>
-        </iframe>
+        <video id="myVideo" width="100%" height="400" controls>
+    <source src="https://res.cloudinary.com/dtnmuheqj/video/upload/v1773959627/New%20Art%20of%20Living.mp4" type="video/mp4">
+</video>
     </div>
 </div>
 
@@ -169,28 +168,18 @@ function openVideo() {
 }
 
 function closeVideo() {
-    document.getElementById("videoModal").style.display = "none";
+    const modal = document.getElementById("videoModal");
+    const iframe = modal.querySelector("iframe");
+
+    modal.style.display = "none";
+
+    // Stop video when closing
+    iframe.src = iframe.src;
 }
 
 function openService(page) {
     window.location.href = page;
 }
-    function openVideo(videoId){
-  let video = document.getElementById(videoId);
-
-  // play video
-  video.play();
-
-  // request fullscreen
-  if (video.requestFullscreen) {
-    video.requestFullscreen();
-  } else if (video.webkitRequestFullscreen) {
-    video.webkitRequestFullscreen();
-  } else if (video.msRequestFullscreen) {
-    video.msRequestFullscreen();
-  }
-}
 </script>
-
 </body>
 </html>
