@@ -5,103 +5,171 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mandip Singh | Insurance Advisor</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-body {
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0d1b2a;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: white;
     text-align: center;
+    overflow-x: hidden;
+}
+
+/* Animated Background Glow */
+body::before {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(78,168,222,0.4), transparent 70%);
+    top: -200px;
+    left: -200px;
+    animation: moveGlow 8s infinite alternate;
+    z-index: 0;
+}
+
+@keyframes moveGlow {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(200px,200px); }
 }
 
 /* HEADER */
 header {
-    padding: 20px;
+    padding: 25px;
+    position: relative;
+    z-index: 1;
 }
 
 .logo {
-    width: 120px;
+    width: 130px;
     cursor: pointer;
+    transition: transform 0.4s ease;
 }
 
-/* PROFILE SECTION */
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* PROFILE */
 .profile {
     margin-top: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .profile img {
-    width: 180px;
+    width: 190px;
     border-radius: 50%;
-    border: 4px solid #1b263b;
+    border: 4px solid #4ea8de;
+    box-shadow: 0 0 30px rgba(78,168,222,0.6);
 }
 
 h1 {
-    margin: 10px 0 5px;
+    margin: 15px 0 5px;
+    font-size: 32px;
 }
 
 .subtitle {
     color: #4ea8de;
+    font-weight: 400;
 }
 
 /* SERVICES */
 .services {
-    margin: 40px 0;
+    margin: 50px 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 18px;
+    position: relative;
+    z-index: 1;
 }
 
 .service-btn {
-    background: #1b263b;
-    border: none;
-    padding: 12px 18px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 14px 22px;
     border-radius: 30px;
     color: white;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 .service-btn:hover {
     background: #4ea8de;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(78,168,222,0.4);
 }
 
-/* DIGITAL CARD */
+/* CARD */
 .card {
     margin: 40px auto;
-    width: 300px;
-    background: #1b263b;
-    padding: 20px;
-    border-radius: 15px;
+    width: 320px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+}
+
+.card p {
+    margin: 8px 0;
+    font-size: 15px;
 }
 
 /* APPOINTMENT */
 .appointment {
-    margin: 30px;
+    margin: 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .appointment a {
-    background: #4ea8de;
+    background: linear-gradient(45deg, #4ea8de, #5390d9);
     color: white;
-    padding: 12px 20px;
+    padding: 14px 28px;
     border-radius: 30px;
     text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.appointment a:hover {
+    box-shadow: 0 8px 25px rgba(78,168,222,0.6);
+    transform: scale(1.05);
 }
 
 /* VIDEO MODAL */
 .modal {
     display: none;
     position: fixed;
-    top: 0;
+    z-index: 5;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.85);
 }
 
 .modal-content {
-    margin: 10% auto;
-    width: 80%;
+    margin: 8% auto;
+    width: 85%;
+    max-width: 800px;
 }
 
 .close {
@@ -110,25 +178,31 @@ h1 {
     font-size: 30px;
     cursor: pointer;
 }
-</style>
 
+/* RESPONSIVE */
+@media(max-width: 600px){
+    .profile img {
+        width: 150px;
+    }
+    .card {
+        width: 90%;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<!-- HEADER WITH LOGO -->
 <header>
     <img src="https://i.postimg.cc/tJPHQKpX/NAOL.jpg" class="logo" onclick="openVideo()" alt="Logo">
 </header>
 
-<!-- PROFILE -->
 <section class="profile">
     <img src="https://i.postimg.cc/KjVq8kLS/mandip.jpg" alt="Mandip Singh">
     <h1>Mandip Singh</h1>
     <p class="subtitle">Licensed Insurance Advisor</p>
 </section>
 
-<!-- SERVICES -->
 <section class="services">
     <button class="service-btn" onclick="openService('life.html')">Life Insurance</button>
     <button class="service-btn" onclick="openService('critical.html')">Critical Illness</button>
@@ -138,7 +212,6 @@ h1 {
     <button class="service-btn" onclick="openService('investment.html')">Investments</button>
 </section>
 
-<!-- DIGITAL CARD -->
 <section class="card">
     <h3>Contact</h3>
     <p>📞 (416) 904-1219</p>
@@ -146,19 +219,17 @@ h1 {
     <p>📍 Mississauga, ON</p>
 </section>
 
-<!-- APPOINTMENT -->
 <section class="appointment">
     <h3>Free Financial Check</h3>
     <a href="https://calendly.com/YOUR-LINK" target="_blank">Book Appointment</a>
 </section>
 
-<!-- VIDEO MODAL -->
 <div id="videoModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeVideo()">&times;</span>
-        <video id="myVideo" width="100%" height="400" controls>
-    <source src="https://res.cloudinary.com/dtnmuheqj/video/upload/v1773959627/New%20Art%20of%20Living.mp4" type="video/mp4">
-</video>
+        <video id="myVideo" width="100%" controls>
+            <source src="https://res.cloudinary.com/dtnmuheqj/video/upload/v1773959627/New%20Art%20of%20Living.mp4" type="video/mp4">
+        </video>
     </div>
 </div>
 
@@ -169,17 +240,17 @@ function openVideo() {
 
 function closeVideo() {
     const modal = document.getElementById("videoModal");
-    const iframe = modal.querySelector("iframe");
+    const video = document.getElementById("myVideo");
 
     modal.style.display = "none";
-
-    // Stop video when closing
-    iframe.src = iframe.src;
+    video.pause();
+    video.currentTime = 0;
 }
 
 function openService(page) {
     window.location.href = page;
 }
 </script>
+
 </body>
 </html>
