@@ -4,251 +4,300 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mandip Singh | Insurance Advisor</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
-body {
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: white;
-    text-align: center;
-    overflow-x: hidden;
+body{
+background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1b263b);
+background-size:400% 400%;
+animation:gradientMove 15s ease infinite;
+color:white;
+overflow-x:hidden;
 }
 
-/* Animated Background Glow */
-body::before {
-    content: "";
-    position: fixed;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(78,168,222,0.4), transparent 70%);
-    top: -200px;
-    left: -200px;
-    animation: moveGlow 8s infinite alternate;
-    z-index: 0;
+@keyframes gradientMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
-@keyframes moveGlow {
-    0% { transform: translate(0,0); }
-    100% { transform: translate(200px,200px); }
+section{
+padding:80px 20px;
+text-align:center;
 }
 
-/* HEADER */
-header {
-    padding: 25px;
-    position: relative;
-    z-index: 1;
+.glass{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,0.4);
+padding:30px;
 }
 
-.logo {
-    width: 130px;
-    cursor: pointer;
-    transition: transform 0.4s ease;
-}
-
-.logo:hover {
-    transform: scale(1.1);
-}
+h1{font-size:38px}
+h2{font-size:30px;margin-bottom:40px}
+.subtitle{color:#4ea8de;margin-top:10px}
 
 /* PROFILE */
-.profile {
-    margin-top: 20px;
-    position: relative;
-    z-index: 1;
-}
-
-.profile img {
-    width: 190px;
-    border-radius: 50%;
-    border: 4px solid #4ea8de;
-    box-shadow: 0 0 30px rgba(78,168,222,0.6);
-}
-
-h1 {
-    margin: 15px 0 5px;
-    font-size: 32px;
-}
-
-.subtitle {
-    color: #4ea8de;
-    font-weight: 400;
+.profile img{
+width:180px;
+border-radius:50%;
+border:4px solid #4ea8de;
+box-shadow:0 0 30px rgba(78,168,222,0.6);
 }
 
 /* SERVICES */
-.services {
-    margin: 50px 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 18px;
-    position: relative;
-    z-index: 1;
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+max-width:1100px;
+margin:auto;
 }
 
-.service-btn {
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 14px 22px;
-    border-radius: 30px;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
+.service-card{
+transition:0.4s;
+cursor:pointer;
 }
 
-.service-btn:hover {
-    background: #4ea8de;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(78,168,222,0.4);
+.service-card:hover{
+transform:translateY(-10px);
+background:#4ea8de;
 }
 
-/* CARD */
-.card {
-    margin: 40px auto;
-    width: 320px;
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(12px);
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-    position: relative;
-    z-index: 1;
+/* TESTIMONIALS */
+.testimonials{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+max-width:1100px;
+margin:auto;
 }
 
-.card h3 {
-    margin-bottom: 15px;
+/* BUTTON */
+.btn{
+display:inline-block;
+background:linear-gradient(45deg,#4ea8de,#5390d9);
+padding:14px 28px;
+border-radius:30px;
+text-decoration:none;
+color:white;
+font-weight:600;
+margin-top:20px;
+transition:0.3s;
 }
 
-.card p {
-    margin: 8px 0;
-    font-size: 15px;
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 10px 30px rgba(78,168,222,0.6);
 }
 
-/* APPOINTMENT */
-.appointment {
-    margin: 40px;
-    position: relative;
-    z-index: 1;
+/* SCROLL ANIMATION */
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
 }
 
-.appointment a {
-    background: linear-gradient(45deg, #4ea8de, #5390d9);
-    color: white;
-    padding: 14px 28px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s ease;
+.fade.show{
+opacity:1;
+transform:translateY(0);
 }
 
-.appointment a:hover {
-    box-shadow: 0 8px 25px rgba(78,168,222,0.6);
-    transform: scale(1.05);
+/* WHATSAPP */
+.whatsapp{
+position:fixed;
+left:20px;
+bottom:20px;
+background:#25D366;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+color:white;
+text-decoration:none;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
-/* VIDEO MODAL */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 5;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.85);
+/* CHAT */
+.chat-btn{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#4ea8de;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
-.modal-content {
-    margin: 8% auto;
-    width: 85%;
-    max-width: 800px;
+.chat-box{
+position:fixed;
+right:20px;
+bottom:100px;
+width:300px;
+background:#1b263b;
+border-radius:20px;
+display:none;
+flex-direction:column;
+overflow:hidden;
 }
 
-.close {
-    color: white;
-    float: right;
-    font-size: 30px;
-    cursor: pointer;
+.chat-header{
+background:#4ea8de;
+padding:10px;
+font-weight:bold;
 }
 
-/* RESPONSIVE */
-@media(max-width: 600px){
-    .profile img {
-        width: 150px;
-    }
-    .card {
-        width: 90%;
-    }
+.chat-messages{
+height:250px;
+overflow-y:auto;
+padding:10px;
+font-size:14px;
 }
+
+.chat-input{
+display:flex;
+}
+
+.chat-input input{
+flex:1;
+padding:10px;
+border:none;
+outline:none;
+}
+
+.chat-input button{
+padding:10px;
+background:#4ea8de;
+border:none;
+color:white;
+cursor:pointer;
+}
+
+.message.bot{color:#4ea8de;margin:5px 0}
+.message.user{text-align:right;margin:5px 0}
 </style>
 </head>
 
 <body>
 
-<header>
-    <img src="https://i.postimg.cc/tJPHQKpX/NAOL.jpg" class="logo" onclick="openVideo()" alt="Logo">
-</header>
-
-<section class="profile">
-    <img src="https://i.postimg.cc/KjVq8kLS/mandip.jpg" alt="Mandip Singh">
-    <h1>Mandip Singh</h1>
-    <p class="subtitle">Licensed Insurance Advisor</p>
+<!-- PROFILE -->
+<section class="fade">
+<div class="profile">
+<img src="https://i.postimg.cc/KjVq8kLS/mandip.jpg">
+<h1>Mandip Singh</h1>
+<p class="subtitle">Licensed Insurance Advisor</p>
+<a href="https://calendly.com/YOUR-LINK" target="_blank" class="btn">Book Free Consultation</a>
+</div>
 </section>
 
-<section class="services">
-    <button class="service-btn" onclick="openService('life.html')">Life Insurance</button>
-    <button class="service-btn" onclick="openService('critical.html')">Critical Illness</button>
-    <button class="service-btn" onclick="openService('disability.html')">Disability</button>
-    <button class="service-btn" onclick="openService('travel.html')">Travel Insurance</button>
-    <button class="service-btn" onclick="openService('mortgage.html')">Mortgage</button>
-    <button class="service-btn" onclick="openService('investment.html')">Investments</button>
+<!-- SERVICES -->
+<section>
+<h2 class="fade">Services</h2>
+<div class="services">
+<div class="glass service-card fade">Life Insurance</div>
+<div class="glass service-card fade">Critical Illness</div>
+<div class="glass service-card fade">Disability Coverage</div>
+<div class="glass service-card fade">Travel Insurance</div>
+<div class="glass service-card fade">Mortgage Protection</div>
+<div class="glass service-card fade">Investments & Wealth Planning</div>
+</div>
 </section>
 
-<section class="card">
-    <h3>Contact</h3>
-    <p>📞 (416) 904-1219</p>
-    <p>✉️ mandipspurba@gmail.com</p>
-    <p>📍 Mississauga, ON</p>
+<!-- TESTIMONIALS -->
+<section>
+<h2 class="fade">Client Testimonials</h2>
+<div class="testimonials">
+<div class="glass fade">
+<p>"Mandip made everything simple and stress-free."</p>
+<br><strong>- Aman K.</strong>
+</div>
+<div class="glass fade">
+<p>"Professional, honest and very knowledgeable."</p>
+<br><strong>- Sarah L.</strong>
+</div>
+<div class="glass fade">
+<p>"Highly recommend for financial planning."</p>
+<br><strong>- David R.</strong>
+</div>
+</div>
 </section>
 
-<section class="appointment">
-    <h3>Free Financial Check</h3>
-    <a href="https://calendly.com/YOUR-LINK" target="_blank">Book Appointment</a>
+<!-- CONTACT -->
+<section class="fade">
+<h2>Contact</h2>
+<p>📞 (416) 904-1219</p>
+<p>✉️ mandipspurba@gmail.com</p>
+<p>📍 Mississauga, ON</p>
 </section>
 
-<div id="videoModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeVideo()">&times;</span>
-        <video id="myVideo" width="100%" controls>
-            <source src="https://res.cloudinary.com/dtnmuheqj/video/upload/v1773959627/New%20Art%20of%20Living.mp4" type="video/mp4">
-        </video>
-    </div>
+<!-- WHATSAPP -->
+<a href="https://wa.me/14169041219" target="_blank" class="whatsapp">💬</a>
+
+<!-- CHATBOT -->
+<div class="chat-btn" onclick="toggleChat()">🤖</div>
+
+<div class="chat-box" id="chatBox">
+<div class="chat-header">Live Chat</div>
+<div class="chat-messages" id="chatMessages">
+<div class="message bot">Hello 👋 How can I help you today?</div>
+</div>
+<div class="chat-input">
+<input type="text" id="chatInput" placeholder="Type message...">
+<button onclick="sendMessage()">Send</button>
+</div>
 </div>
 
 <script>
-function openVideo() {
-    document.getElementById("videoModal").style.display = "block";
+
+/* Scroll Animation */
+const fades=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+fades.forEach(el=>{
+const top=el.getBoundingClientRect().top;
+if(top<window.innerHeight-100){
+el.classList.add('show');
+}
+});
+});
+
+/* Chat Toggle */
+function toggleChat(){
+const box=document.getElementById('chatBox');
+box.style.display=box.style.display==='flex'?'none':'flex';
 }
 
-function closeVideo() {
-    const modal = document.getElementById("videoModal");
-    const video = document.getElementById("myVideo");
+/* Chat Bot */
+function sendMessage(){
+const input=document.getElementById('chatInput');
+const messages=document.getElementById('chatMessages');
+if(input.value.trim()==='') return;
 
-    modal.style.display = "none";
-    video.pause();
-    video.currentTime = 0;
-}
+messages.innerHTML+=`<div class="message user">${input.value}</div>`;
 
-function openService(page) {
-    window.location.href = page;
+setTimeout(()=>{
+messages.innerHTML+=`<div class="message bot">Thank you for your message. Mandip will contact you shortly regarding "${input.value}".</div>`;
+messages.scrollTop=messages.scrollHeight;
+},800);
+
+input.value='';
+messages.scrollTop=messages.scrollHeight;
 }
 </script>
 
