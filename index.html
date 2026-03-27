@@ -14,7 +14,24 @@
   --gold-soft:#a88945;
   --dark:#0b0b0c;
 }
-body{
+<body>
+  <!-- BACKGROUND VIDEO -->
+<video autoplay muted loop playsinline id="bgVideo" style="
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%;
+  min-height:100%;
+  width:auto;
+  height:auto;
+  z-index:-1;
+  object-fit:cover;
+  opacity:0.25;
+">
+  <source src="https://res.cloudinary.com/dtnmuheqj/video/upload/v1773959627/New%20Art%20of%20Living.mp4" type="video/mp4">
+</video>
+  {
   background:linear-gradient(135deg,#0b0b0c,#111);
   color:#e5e5e5;
   font-family:'Inter',sans-serif;
@@ -531,6 +548,97 @@ section:hover{
   }
 
 }
+  /* Expandable service list */
+.service-card .service-list {
+  display: none;
+  list-style:none;
+  padding-left:20px;
+  margin-top:15px;
+  color:#ccc;
+}
+
+.service-card .service-list li {
+  margin-bottom:10px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.service-card .service-list li:hover {
+  color: var(--gold);
+}
+
+/* Service Modal */
+.service-modal{
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.95);
+  backdrop-filter:blur(10px);
+  justify-content:center;
+  align-items:center;
+  z-index:4000;
+  padding:30px;
+}
+
+.service-content{
+  display:flex;
+  gap:40px;
+  max-width:1000px;
+  width:100%;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+}
+
+.service-content img{
+  width:300px;
+  max-width:90%;
+  border-radius:12px;
+  border:3px solid var(--gold);
+  box-shadow:0 0 25px rgba(198,167,94,0.4);
+}
+
+.service-text{
+  max-width:500px;
+  color:#ccc;
+  text-align:left;
+}
+
+.service-text h3{
+  color:var(--gold);
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+.service-text p{
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+.service-text .btn{
+  margin-top:10px;
+}
+
+.close-service{
+  position:absolute;
+  top:40px;
+  right:50px;
+  font-size:36px;
+  color:var(--gold);
+  cursor:pointer;
+}
+
+/* Mobile adjustments */
+@media(max-width:900px){
+  .service-content{
+    flex-direction:column;
+    gap:25px;
+  }
+  .service-content img{
+    width:80%;
+  }
+}
 </style>
 </head>
 <body>
@@ -552,24 +660,78 @@ section:hover{
 <section>
 <div class="profile">
 <img src="https://i.postimg.cc/KjVq8kLS/mandip.jpg" onclick="openPhilosophy()">
-<h1>Mandip Singh</h1>
+<h1>MANDIP SINGH</h1>
 <p class="subtitle">Private Wealth & Insurance Advisory</p>
 <div class="divider"></div>
-<a href="#" class="btn">REQUEST PRIVATE CONSULTATION</a>
+<a href="#" class="btn">REQUEST YOUR COMPLIMENTARY PRIVATE CONSULTATION</a>
 </div>
 </section>
 
 <!-- SERVICES -->
 <section>
-<h2>Strategic Wealth Protection</h2>
-<div class="services">
-<div class="card">Life Insurance Structuring</div>
-<div class="card">Critical Illness Protection</div>
-<div class="card">Disability Income Planning</div>
-<div class="card">Mortgage Risk Shielding</div>
-<div class="card">Global Travel Coverage</div>
-<div class="card">Investment & Retirement Architecture</div>
-</div>
+  <h2>Our Expertise</h2>
+  <div class="services">
+
+    <!-- PROTECTION & SECURITY -->
+    <div class="card service-card" onclick="toggleCategory(this)">
+      <h3>Protection & Security</h3>
+      <ul class="service-list">
+        <li onclick="openService(event, 'Life Insurance', 'https://i.postimg.cc/kG6qFJhM/life.jpg', 'Life Insurance provides long-term financial security for you and your family.')">Life Insurance</li>
+        <li onclick="openService(event, 'Critical Illness Insurance', 'https://i.postimg.cc/0yFj0QjS/critical.jpg', 'Protect yourself against major health events with strategic coverage.')">Critical Illness Insurance</li>
+        <li onclick="openService(event, 'Disability Insurance', 'https://i.postimg.cc/7LP1W9P9/disability.jpg', 'Ensure income continuity if an unforeseen disability occurs.')">Disability Insurance</li>
+        <li onclick="openService(event, 'Super Visa Insurance', 'https://i.postimg.cc/ZR2C8LtL/supervisa.jpg', 'Specialized coverage for visitors from abroad.')">Super Visa Insurance</li>
+        <li onclick="openService(event, 'Travel Insurance', 'https://i.postimg.cc/4N6cWv3c/travel.jpg', 'Comprehensive travel protection for peace of mind abroad.')">Travel Insurance</li>
+        <li onclick="openService(event, 'Health, Dental & Drug Plans', 'https://i.postimg.cc/3Nwht8Fz/health.jpg', 'Complete health coverage for individuals and families.')">Health, Dental & Drug Plans</li>
+        <li onclick="openService(event, 'Funeral Insurance', 'https://i.postimg.cc/Wbz1kGtw/funeral.jpg', 'Plan for end-of-life expenses with dignity.')">Funeral Insurance</li>
+        <li onclick="openService(event, 'Child Plans', 'https://i.postimg.cc/DZ3gW3S1/child.jpg', 'Education and savings plans for your children.')">Child Plans</li>
+      </ul>
+    </div>
+
+    <!-- PROPERTY & LIABILITY -->
+    <div class="card service-card" onclick="toggleCategory(this)">
+      <h3>Property & Liability</h3>
+      <ul class="service-list">
+        <li onclick="openService(event, 'Commercial/Liability Insurance', 'https://i.postimg.cc/8kGg1nVb/commercial.jpg', 'Protect your business with comprehensive liability coverage.')">Commercial/Liability Insurance</li>
+        <li onclick="openService(event, 'Mortgage Insurance', 'https://i.postimg.cc/k5K9KxQf/mortgage.jpg', 'Safeguard your mortgage investment and loved ones.')">Mortgage Insurance</li>
+        <li onclick="openService(event, 'Auto & Home Insurance (Referral)', 'https://i.postimg.cc/XY5YqJp0/auto-home.jpg', 'Secure your vehicle and home through trusted referrals.')">Auto & Home Insurance</li>
+        <li onclick="openService(event, 'Group Insurance', 'https://i.postimg.cc/1z5Hk6rP/group.jpg', 'Employer and group coverage plans tailored to your needs.')">Group Insurance</li>
+      </ul>
+    </div>
+
+    <!-- INVESTMENT & WEALTH -->
+    <div class="card service-card" onclick="toggleCategory(this)">
+      <h3>Investment & Wealth</h3>
+      <ul class="service-list">
+        <li onclick="openService(event, 'RRSP', 'https://i.postimg.cc/fR0hxBzZ/rrsp.jpg', 'Registered Retirement Savings Plans for tax-efficient growth.')">RRSP</li>
+        <li onclick="openService(event, 'RESP', 'https://i.postimg.cc/qvBfJq5d/resp.jpg', 'Education savings plans for your children’s future.')">RESP</li>
+        <li onclick="openService(event, 'TFSA', 'https://i.postimg.cc/fRzK4VhM/tfsa.jpg', 'Tax-Free Savings Account for flexible investment growth.')">TFSA</li>
+        <li onclick="openService(event, 'RDSP', 'https://i.postimg.cc/FsF64QdL/rdsp.jpg', 'Registered Disability Savings Plans for long-term support.')">RDSP</li>
+        <li onclick="openService(event, 'Mutual Funds', 'https://i.postimg.cc/bJTY1JzK/mutual.jpg', 'Diversified portfolios managed for growth and security.')">Mutual Funds</li>
+        <li onclick="openService(event, 'Segregated Funds', 'https://i.postimg.cc/3xVwGxfQ/segregated.jpg', 'Hybrid insurance-investment products for protection and growth.')">Segregated Funds</li>
+        <li onclick="openService(event, 'Locked Investments', 'https://i.postimg.cc/ZKL9hDLx/locked.jpg', 'Secure, fixed-term investment options for guaranteed returns.')">Locked Investments</li>
+        <li onclick="openService(event, 'Mortgage (Referral)', 'https://i.postimg.cc/6Q6N4BpF/mortgage2.jpg', 'Expert mortgage planning and referral for optimal rates.')">Mortgage</li>
+        <li onclick="openService(event, 'Debt Consolidation', 'https://i.postimg.cc/Xv4QxLh0/debt.jpg', 'Streamline and reduce debt with professional guidance.')">Debt Consolidation</li>
+      </ul>
+    </div>
+
+    <!-- ESTATE PLANNING -->
+    <div class="card service-card" onclick="toggleCategory(this)">
+      <h3>Estate & Legacy</h3>
+      <ul class="service-list">
+        <li onclick="openService(event, 'Estate Planning', 'https://i.postimg.cc/kGv7G2H5/estate.jpg', 'Organize your assets and legacy for long-term security.')">Estate Planning</li>
+        <li onclick="openService(event, 'Will Preparation', 'https://i.postimg.cc/9Q7jF2Jw/will.jpg', 'Ensure your wishes are respected through proper will documentation.')">Will Preparation</li>
+      </ul>
+    </div>
+
+    <!-- CAREER & OPPORTUNITIES -->
+    <div class="card service-card" onclick="toggleCategory(this)">
+      <h3>Career & Opportunities</h3>
+      <ul class="service-list">
+        <li onclick="openService(event, 'Join Our Team', 'https://i.postimg.cc/L4QY9bk6/career.jpg', 'Explore career opportunities in a growing financial advisory firm.')">Join Our Team</li>
+      </ul>
+    </div>
+
+  </div>
 </section>
 
 <!-- WHATSAPP -->
@@ -624,6 +786,17 @@ I am deeply committed — even obsessed — with sharing these philosophies with
 </div>
 </div>
 </div>
+  <div class="service-modal" id="serviceModal">
+  <span class="close-service" onclick="closeService()">&times;</span>
+  <div class="service-content">
+    <img id="serviceImage" src="" alt="" />
+    <div class="service-text">
+      <h3 id="serviceTitle"></h3>
+      <p id="serviceDescription"></p>
+      <a href="https://wa.me/14169041219" class="btn">Contact for More Info</a>
+    </div>
+  </div>
+</div>
 
 <script>
 function openVideo(){
@@ -665,6 +838,25 @@ function sendMessage(){
     closeVideo();
   }
 });
+  // Toggle category list
+function toggleCategory(card){
+  const list = card.querySelector('.service-list');
+  list.style.display = list.style.display === 'block' ? 'none' : 'block';
+}
+
+// Open service modal
+function openService(event, title, imgSrc, description){
+  event.stopPropagation(); // prevent parent toggle
+  document.getElementById('serviceModal').style.display='flex';
+  document.getElementById('serviceTitle').innerText = title;
+  document.getElementById('serviceImage').src = imgSrc;
+  document.getElementById('serviceDescription').innerText = description;
+}
+
+// Close service modal
+function closeService(){
+  document.getElementById('serviceModal').style.display='none';
+}
 </script>
 
 </body>
