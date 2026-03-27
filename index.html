@@ -627,7 +627,11 @@ I am deeply committed — even obsessed — with sharing these philosophies with
 
 <script>
 function openVideo(){
-  document.getElementById('videoModal').style.display='flex';
+  const modal = document.getElementById('videoModal');
+  const video = document.getElementById('promoVideo');
+
+  modal.style.display = 'flex';
+  video.play(); // THIS makes it start immediately
 }
 function closeVideo(){
   const video=document.getElementById('promoVideo');
@@ -656,6 +660,11 @@ function sendMessage(){
   },800);
   input.value='';
 }
+  document.getElementById('videoModal').addEventListener('click', function(e){
+  if(e.target === this){
+    closeVideo();
+  }
+});
 </script>
 
 </body>
