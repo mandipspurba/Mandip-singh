@@ -426,6 +426,8 @@ document.getElementById('videoModal').style.display='flex';
 function closeVideo(){
 const modal=document.getElementById('videoModal');
 const video=document.getElementById('promoVideo');
+const modal = document.getElementById('philosophyModal');
+modal.scrollTop = 0; // scroll top when opening
 modal.style.display='none';
 video.pause();
 video.currentTime=0;
