@@ -282,6 +282,62 @@ cursor:pointer;
 <a href="#" class="btn">REQUEST PRIVATE CONSULTATION</a>
 </div>
 </section>
+  <!-- SERVICES -->
+<section>
+<h2>Strategic Wealth Protection</h2>
+<div class="services">
+<div class="card">Life Insurance Structuring</div>
+<div class="card">Critical Illness Protection</div>
+<div class="card">Disability Income Planning</div>
+<div class="card">Mortgage Risk Shielding</div>
+<div class="card">Global Travel Coverage</div>
+<div class="card">Investment & Retirement Architecture</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+<h2>Client Endorsements</h2>
+<div class="testimonials">
+<div class="card">
+"Mandip operates with integrity and exceptional financial precision."
+<br><br><strong>— Private Client</strong>
+</div>
+<div class="card">
+"A rare advisor who blends expertise with discretion."
+<br><br><strong>— Executive Client</strong>
+</div>
+<div class="card">
+"Our family's financial foundation is stronger because of him."
+<br><br><strong>— Long-Term Client</strong>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section>
+<h2>Contact</h2>
+<div class="divider"></div>
+<p>+1 (416) 904-1219</p>
+<p>mandipspurba@gmail.com</p>
+<p>Mississauga, Ontario</p>
+</section>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/14169041219" target="_blank" class="whatsapp">WA</a>
+
+<!-- CHAT -->
+<div class="chat-btn" onclick="toggleChat()">Chat</div>
+<div class="chat-box" id="chatBox">
+<div class="chat-header">Private Client Channel</div>
+<div class="chat-messages" id="chatMessages">
+Welcome. How may we assist you?
+</div>
+<div class="chat-input">
+<input type="text" id="chatInput" placeholder="Your message...">
+<button onclick="sendMessage()">Send</button>
+</div>
+</div>
 
 <!-- PHILOSOPHY MODAL -->
 <div class="philosophy-modal" id="philosophyModal">
@@ -347,6 +403,21 @@ music.play();
 function closePhilosophy(){
 document.getElementById('philosophyModal').style.display='none';
 document.getElementById('bgMusic').pause();
+}
+  function toggleChat(){
+const box=document.getElementById('chatBox');
+box.style.display=box.style.display==='flex'?'none':'flex';
+}
+function sendMessage(){
+const input=document.getElementById('chatInput');
+const messages=document.getElementById('chatMessages');
+if(input.value.trim()==='') return;
+messages.innerHTML+=`<div style="text-align:right;margin:8px 0">${input.value}</div>`;
+setTimeout(()=>{
+messages.innerHTML+=`<div style="color:#c6a75e;margin:8px 0">Thank you. Our office will respond discreetly.</div>`;
+messages.scrollTop=messages.scrollHeight;
+},900);
+input.value='';
 }
 </script>
 
