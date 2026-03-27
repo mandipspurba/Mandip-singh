@@ -465,6 +465,72 @@ section:hover{
   background:var(--gold);
   border-radius:10px;
 }
+  /* ======================================= */
+/*        IPHONE SAFARI PERFECT FIX        */
+/* ======================================= */
+
+@supports (-webkit-touch-callout: none) {
+
+  /* Fix iOS viewport height issue */
+  .philosophy-modal{
+    height:100dvh;
+    align-items:center;
+    padding:20px;
+  }
+
+  /* Remove excessive vertical space */
+  .philosophy-content{
+    gap:30px;
+  }
+
+  /* Prevent image top/bottom cutting */
+  .philosophy-left img{
+    max-height:65dvh;
+    height:auto;
+    object-fit:contain;
+  }
+
+  /* Better spacing for mobile */
+  @media(max-width:900px){
+
+    .philosophy-content{
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:25px;
+    }
+
+    .philosophy-left{
+      margin-left:0; /* remove desktop push */
+      animation:none;
+      opacity:1;
+      transform:none;
+    }
+
+    .philosophy-left img{
+      width:75%;
+      max-height:60dvh;
+    }
+
+    .philosophy-right{
+      animation:none;
+      opacity:1;
+      transform:none;
+    }
+
+    .philosophy-gif{
+      max-width:260px;
+      max-height:180px;
+    }
+
+    .philosophy-message{
+      max-width:90%;
+      margin-top:10px;
+    }
+
+  }
+
+}
 </style>
 </head>
 <body>
