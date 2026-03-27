@@ -314,6 +314,157 @@ h2{font-size:34px;color:var(--gold);margin-bottom:70px;}
 @media(max-width:900px){
   .philosophy-content{flex-direction:column;}
 }
+/* ======================================= */
+/*        ULTRA REFINED LUXURY MODE        */
+/* ======================================= */
+
+/* Smooth global scroll */
+html{
+  scroll-behavior:smooth;
+}
+
+/* Subtle page fade-in */
+body{
+  animation:pageFade 1.2s ease forwards;
+}
+
+@keyframes pageFade{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* Elegant gold shimmer effect */
+@keyframes goldShimmer{
+  0%{background-position:-200px 0;}
+  100%{background-position:200px 0;}
+}
+
+.gold-title{
+  background:linear-gradient(
+    90deg,
+    #c6a75e 0%,
+    #f5e6b3 50%,
+    #c6a75e 100%
+  );
+  background-size:200px 100%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:goldShimmer 4s linear infinite;
+}
+
+/* Premium card hover refinement */
+.card{
+  backdrop-filter:blur(20px);
+  transition:all .4s cubic-bezier(.22,.61,.36,1);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+/* Ultra smooth button interaction */
+.btn{
+  position:relative;
+  overflow:hidden;
+}
+
+.btn::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.3),
+    transparent
+  );
+  transition:all .8s;
+}
+
+.btn:hover::after{
+  left:100%;
+}
+
+/* Floating logo premium glow */
+.logo-float{
+  transition:all .4s ease;
+}
+
+.logo-float:hover{
+  box-shadow:
+    0 0 20px rgba(198,167,94,.6),
+    0 0 40px rgba(198,167,94,.4);
+}
+
+/* Philosophy modal cinematic blur */
+.philosophy-modal{
+  backdrop-filter:blur(12px) saturate(120%);
+}
+
+/* Ultra refined entrance animation */
+.philosophy-left{
+  animation:slideLeftSoft 1.4s cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+.philosophy-right{
+  animation:slideRightSoft 1.4s cubic-bezier(.22,.61,.36,1) forwards;
+}
+
+@keyframes slideLeftSoft{
+  from{opacity:0; transform:translateX(-50px);}
+  to{opacity:1; transform:translateX(0);}
+}
+
+@keyframes slideRightSoft{
+  from{opacity:0; transform:translateX(50px);}
+  to{opacity:1; transform:translateX(0);}
+}
+
+/* Subtle parallax depth illusion */
+section{
+  transition:transform .6s ease;
+}
+
+section:hover{
+  transform:translateY(-3px);
+}
+
+/* Chat box luxury glass */
+.chat-box{
+  backdrop-filter:blur(25px);
+  background:rgba(18,18,18,0.85);
+  border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+/* WhatsApp refinement */
+.whatsapp{
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
+  transition:all .3s ease;
+}
+
+.whatsapp:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 40px rgba(0,0,0,.6);
+}
+
+/* Subtle scrollbar styling */
+::-webkit-scrollbar{
+  width:6px;
+}
+
+::-webkit-scrollbar-track{
+  background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+  background:var(--gold);
+  border-radius:10px;
+}
 </style>
 </head>
 <body>
