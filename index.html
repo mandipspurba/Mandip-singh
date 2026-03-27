@@ -254,13 +254,73 @@ color:black;
 padding:12px;
 cursor:pointer;
 }
+  /* GOLD FADE-IN */
+.gold-fade{
+opacity:0;
+animation:goldReveal 2.5s ease forwards;
+}
+
+@keyframes goldReveal{
+0%{opacity:0; letter-spacing:5px;}
+100%{opacity:1; letter-spacing:2px;}
+}
+
+/* SLIDE ANIMATIONS */
+.reveal-left{
+opacity:0;
+transform:translateX(-60px);
+animation:slideLeft 1.8s ease forwards;
+animation-delay:0.3s;
+}
+
+.reveal-right{
+opacity:0;
+transform:translateX(60px);
+animation:slideRight 1.8s ease forwards;
+animation-delay:0.6s;
+}
+
+@keyframes slideLeft{
+to{
+opacity:1;
+transform:translateX(0);
+}
+}
+
+@keyframes slideRight{
+to{
+opacity:1;
+transform:translateX(0);
+}
+}
+
+/* SIGNATURE STYLE */
+.signature{
+margin-top:50px;
+font-family: 'Times New Roman', serif;
+font-size:18px;
+color:var(--gold);
+letter-spacing:2px;
+}
+
+/* Subtle background glow */
+.philosophy-modal{
+animation:backgroundFade 1.5s ease forwards;
+}
+
+@keyframes backgroundFade{
+from{background:rgba(0,0,0,0.0);}
+to{background:rgba(0,0,0,0.97);}
+}
 </style>
 </head>
 
 <body>
 
 <!-- GOLD LOGO -->
-<img src="https://i.postimg.cc/tJPHQKpX/NAOL.jpg" class="logo-float" onclick="openVideo()">
+<img src="https://i.postimg.cc/KjVq8kLS/mandip.jpg" 
+     onclick="openPhilosophy()" 
+     style="cursor:pointer;">
 
 <!-- VIDEO -->
 <div class="video-modal" id="videoModal">
@@ -341,7 +401,47 @@ Welcome. How may we assist you?
 <button onclick="sendMessage()">Send</button>
 </div>
 </div>
+<!-- PHILOSOPHY MODAL -->
+<div class="philosophy-modal" id="philosophyModal">
+    <div class="philosophy-content">
 
+        <!-- LEFT SIDE PHOTO -->
+        <div class="philosophy-left reveal-left">
+            <img src="https://i.postimg.cc/KjVq8kLS/mandip.jpg">
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="philosophy-right reveal-right">
+            <img src="YOUR-GIF-LINK.gif" class="philosophy-gif">
+
+            <div class="philosophy-message">
+                <h2 class="gold-fade">The New Art of Living</h2>
+                <div class="divider"></div>
+
+                <p>
+                    Freedom through expanded income.<br><br>
+                    Security through strategic savings.<br><br>
+                    Peace through elevated thinking.
+                </p>
+
+                <p class="obsession-line">
+                    I am deeply committed — even obsessed — 
+                    with sharing these philosophies with the world.
+                </p>
+
+                <div class="signature">
+                    — Mandip Singh
+                </div>
+            </div>
+        </div>
+
+        <span class="close-philosophy" onclick="closePhilosophy()">&times;</span>
+
+    </div>
+</div>
+  <audio id="bgMusic" loop>
+  <source src="YOUR-MUSIC.mp3" type="audio/mpeg">
+</audio>
 <script>
 function openVideo(){
 document.getElementById('videoModal').style.display='flex';
@@ -367,6 +467,37 @@ messages.innerHTML+=`<div style="color:#c6a75e;margin:8px 0">Thank you. Our offi
 messages.scrollTop=messages.scrollHeight;
 },900);
 input.value='';
+}
+function openPhilosophy(){
+const modal = document.getElementById('philosophyModal');
+modal.style.display='flex';
+
+/* restart animations */
+const left = document.querySelector('.reveal-left');
+const right = document.querySelector('.reveal-right');
+const gold = document.querySelector('.gold-fade');
+
+left.style.animation = 'none';
+right.style.animation = 'none';
+gold.style.animation = 'none';
+
+void left.offsetWidth;
+void right.offsetWidth;
+void gold.offsetWidth;
+
+left.style.animation = '';
+right.style.animation = '';
+gold.style.animation = '';
+
+/* play music */
+const music = document.getElementById('bgMusic');
+music.volume = 0.4;
+music.play();
+}
+
+function closePhilosophy(){
+document.getElementById('philosophyModal').style.display='none';
+document.getElementById('bgMusic').pause();
 }
 </script>
 
