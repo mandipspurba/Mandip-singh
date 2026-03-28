@@ -639,6 +639,68 @@ section:hover{
     width:80%;
   }
 }
+  /* TESTIMONIAL REFINEMENT */
+.testimonial-card{
+  cursor:pointer;
+  transition:all .5s cubic-bezier(.22,.61,.36,1);
+}
+
+.testimonial-card:hover{
+  transform:translateY(-6px) scale(1.02);
+  box-shadow:0 25px 60px rgba(0,0,0,.6);
+}
+
+/* Testimonial Modal */
+.testimonial-modal{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.95);
+  backdrop-filter:blur(15px);
+  justify-content:center;
+  align-items:center;
+  padding:30px;
+  z-index:4000;
+}
+
+.testimonial-content{
+  max-width:800px;
+  background:rgba(15,15,15,.9);
+  border:1px solid var(--gold);
+  padding:60px 40px;
+  text-align:center;
+  animation:fadeLuxury 1s ease forwards;
+}
+
+.testimonial-content h3{
+  font-family:'Playfair Display',serif;
+  color:var(--gold);
+  margin-bottom:25px;
+  font-size:28px;
+}
+
+.testimonial-content p{
+  font-size:17px;
+  line-height:1.8;
+  color:#ddd;
+}
+
+.close-testimonial{
+  position:absolute;
+  top:40px;
+  right:50px;
+  font-size:38px;
+  color:var(--gold);
+  cursor:pointer;
+}
+
+@keyframes fadeLuxury{
+  from{opacity:0; transform:translateY(40px);}
+  to{opacity:1; transform:translateY(0);}
+}
 </style>
 </head>
 <body>
@@ -749,6 +811,31 @@ REQUEST YOUR PRIVATE COMPLIMENTARY CONSULTATION
 
   </div>
 </section>
+  <!-- TESTIMONIALS -->
+<section id="testimonials">
+  <h2>Client Experiences</h2>
+  <div class="services">
+
+    <div class="card testimonial-card" onclick="openTestimonial(1)">
+      <p>"Mandip restructured our protection strategy with precision."</p>
+      <div class="divider"></div>
+      <strong>— Executive Client</strong>
+    </div>
+
+    <div class="card testimonial-card" onclick="openTestimonial(2)">
+      <p>"Professional. Strategic. Discreet."</p>
+      <div class="divider"></div>
+      <strong>— Business Owner</strong>
+    </div>
+
+    <div class="card testimonial-card" onclick="openTestimonial(3)">
+      <p>"We finally feel financially protected."</p>
+      <div class="divider"></div>
+      <strong>— Family Client</strong>
+    </div>
+
+  </div>
+</section>
 
 <!-- WHATSAPP -->
 <a href="https://wa.me/14169041219" target="_blank" class="whatsapp">Private Advisor Line</a>
@@ -826,6 +913,12 @@ I am deeply committed — even obsessed — with sharing these philosophies with
   frameborder="0">
 </iframe>
 </div>
+</div>
+  <!-- TESTIMONIAL MODAL -->
+<div class="testimonial-modal" id="testimonialModal">
+  <span class="close-testimonial" onclick="closeTestimonial()">&times;</span>
+  <div class="testimonial-content" id="testimonialContent">
+  </div>
 </div>
 
 <script>
@@ -957,6 +1050,36 @@ function closeService(){
 }
 function closeBooking(){
   document.getElementById('bookingModal').style.display='none';
+}
+  function openTestimonial(id){
+  const modal = document.getElementById('testimonialModal');
+  const content = document.getElementById('testimonialContent');
+
+  const testimonials = {
+    1: {
+      title: "Executive Client",
+      text: "Mandip conducted a full financial audit for our family. His structured approach to life insurance, estate strategy and risk management gave us clarity and confidence. His advisory style reflects true discretion and precision."
+    },
+    2: {
+      title: "Business Owner",
+      text: "From corporate liability structuring to personal wealth protection, the advisory process was seamless. The level of professionalism and strategic insight exceeded expectations."
+    },
+    3: {
+      title: "Family Client",
+      text: "We thought we were covered — until we realized we weren't. Mandip redesigned our entire protection portfolio. Today, our future feels secure, structured and professionally protected."
+    }
+  };
+
+  content.innerHTML = `
+    <h3>${testimonials[id].title}</h3>
+    <p>${testimonials[id].text}</p>
+  `;
+
+  modal.style.display='flex';
+}
+
+function closeTestimonial(){
+  document.getElementById('testimonialModal').style.display='none';
 }
 </script>
 
