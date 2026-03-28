@@ -749,14 +749,16 @@ section:hover{
 </section>
 
 <!-- WHATSAPP -->
-<a href="https://wa.me/14169041219" target="_blank" class="whatsapp">WhatsApp</a>
+<a href="https://wa.me/14169041219" target="_blank" class="whatsapp">Private Advisor Line</a>
 
 <!-- CHAT -->
-<div class="chat-btn" onclick="toggleChat()">Private Chat</div>
+<div class="chat-btn" onclick="toggleChat()">AI Concierge</div>
 <div class="chat-box" id="chatBox">
-<div class="chat-header">Private Client Channel</div>
+<div class="chat-header">AI Concierge — 24/7 Assistance</div>
 <div class="chat-messages" id="chatMessages">
-Welcome. How may we assist you?
+Welcome to Mandip Singh Private Advisory.
+Our AI Concierge is here to assist you instantly.
+How may we serve you today?
 </div>
 <div class="chat-input">
 <input type="text" id="chatInput" placeholder="Your message...">
@@ -836,16 +838,81 @@ function toggleChat(){
   const box=document.getElementById('chatBox');
   box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
 }
+let clientName = "";
+let stage = 0;
+
 function sendMessage(){
-  const input=document.getElementById('chatInput');
-  const messages=document.getElementById('chatMessages');
-  if(input.value.trim()==='') return;
-  messages.innerHTML += `<div style="text-align:right;margin:8px 0">${input.value}</div>`;
+  const input = document.getElementById('chatInput');
+  const messages = document.getElementById('chatMessages');
+  const text = input.value.trim();
+
+  if(text === "") return;
+
+  messages.innerHTML += `<div style="text-align:right;margin:8px 0">${text}</div>`;
+  messages.scrollTop = messages.scrollHeight;
+
+  input.value = "";
+
   setTimeout(()=>{
-    messages.innerHTML += `<div style="color:#c6a75e;margin:8px 0">Thank you. Our office will respond discreetly.</div>`;
-    messages.scrollTop=messages.scrollHeight;
-  },800);
-  input.value='';
+    messages.innerHTML += `<div style="color:#c6a75e;margin:8px 0">${luxuryBot(text)}</div>`;
+    messages.scrollTop = messages.scrollHeight;
+  },900);
+}
+
+function luxuryBot(text){
+  const message = text.toLowerCase();
+
+  // Stage 0 – Ask Name
+  if(stage === 0){
+    stage = 1;
+    return "Welcome to our Private Client Channel. May I know your good name?";
+  }
+
+  // Stage 1 – Capture Name
+  if(stage === 1){
+    clientName = text;
+    stage = 2;
+    return `Pleasure to connect with you, ${clientName}. Are you exploring protection, investment growth, mortgage solutions, or financial restructuring?`;
+  }
+
+  // Stage 2 – Understand Need
+  if(stage === 2){
+
+    if(message.includes("life") || message.includes("insurance")){
+      stage = 3;
+      return "Life Insurance creates immediate financial security for your family. Would you like a Complimentary Protection Assessment?";
+    }
+
+    if(message.includes("investment") || message.includes("rrsp") || message.includes("tfsa") || message.includes("fund")){
+      stage = 3;
+      return "We design structured wealth strategies including RRSP, TFSA, Segregated & Guaranteed Funds. Would you like a Portfolio Review?";
+    }
+
+    if(message.includes("mortgage")){
+      stage = 3;
+      return "We provide Mortgage Protection & strategic referrals. Are you purchasing, refinancing, or protecting an existing mortgage?";
+    }
+
+    if(message.includes("debt")){
+      stage = 3;
+      return "Debt Consolidation can reduce financial pressure significantly. Would you like a confidential financial restructuring review?";
+    }
+
+    if(message.includes("career")){
+      stage = 3;
+      return "We are expanding our advisory division. Would you like to explore a professional opportunity in financial services?";
+    }
+
+    return "Kindly share which area you are interested in: Protection, Investment Growth, Mortgage, Debt Strategy, or Career Opportunity.";
+  }
+
+  // Stage 3 – Close & Redirect
+  if(stage === 3){
+    stage = 4;
+    return `Excellent decision, ${clientName}. For a private and detailed consultation, please connect via WhatsApp or book your Complimentary Financial Review. Our advisory office will prioritize your request.`;
+  }
+
+  return "Our advisory desk will connect with you shortly.";
 }
   document.getElementById('videoModal').addEventListener('click', function(e){
   if(e.target === this){
