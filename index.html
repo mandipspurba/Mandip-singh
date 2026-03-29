@@ -467,33 +467,33 @@ section:hover{
     top: 0;
     left: 0;
     width: 100%;
-    height: 100dvh;
-    background: #000;
+    height: 100dvh;      
+    background: #000;    
     display: flex;
-    justify-content: center; /* center horizontally */
-    align-items: center;     /* center vertically */
-    overflow-y: auto;
+    justify-content: center;
+    align-items: flex-start; /* align content to top instead of center */
+    overflow-y: auto;     
     z-index: 3000;
-    padding: 20px;
+    padding: 20px 0;     /* top/bottom padding */
     -webkit-overflow-scrolling: touch;
   }
 
   .philosophy-content {
-    flex-direction: column;  /* stack image & text */
-    align-items: center;     /* center horizontally */
-    justify-content: center; /* center vertically */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     gap: 25px;
     padding: 0 20px;
   }
 
   .philosophy-left {
-    margin-left: 0; /* remove any push */
+    margin-left: 0;       /* remove desktop push */
   }
 
   .philosophy-left img {
     width: 85%;
     max-height: 70dvh;   
-    object-fit: contain;
+    object-fit: contain;  
     border-radius: 10px;
     border: 3px solid var(--gold);
     box-shadow: 0 0 25px rgba(198,167,94,0.4);
@@ -517,7 +517,7 @@ section:hover{
   }
 
   .close-philosophy {
-    position: fixed;   /* always visible */
+    position: fixed;        /* keep it always visible */
     top: 30px;
     right: 20px;
     font-size: 36px;
