@@ -730,6 +730,16 @@ section:hover{
   transform:translate(-50%,-50%);
   z-index:-1;
 }
+  .profile-section::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:50%;
+  width:60%;
+  height:1px;
+  background:linear-gradient(to right, transparent, var(--gold), transparent);
+  transform:translateX(-50%);
+}
 </style>
 </head>
 <body>
