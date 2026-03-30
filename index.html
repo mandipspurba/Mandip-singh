@@ -1156,14 +1156,13 @@ function toggleCategory(card){
 }
 
 // Open service modal
-function openService(event, title, imgSrc, description){
-  event.stopPropagation(); // prevent parent toggle
-  document.getElementById('serviceModal').style.display='flex';
-  document.getElementById('serviceTitle').innerText = title;
-  document.getElementById('serviceImage').src = imgSrc;
-  document.getElementById('serviceDescription').innerText = description;
+function openService(event, title, image, description) {
+    event.stopPropagation();
+    document.getElementById('serviceModal').style.display = 'flex';
+    document.getElementById('serviceTitle').innerText = title;
+    document.getElementById('serviceImage').src = image;
+    document.getElementById('serviceDescription').innerHTML = description; // innerHTML
 }
-
 // Close service modal
 function closeService(){
   document.getElementById('serviceModal').style.display='none';
